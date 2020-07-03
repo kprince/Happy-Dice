@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RewardPanel
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 4a9763f114d50ea45b137d902da5b24a, type: 3}
+    totalSpriteSurfaceArea: 3430456
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7b16245043522e34ea2dcc5ba051d99e, type: 3}
+  - {fileID: 21300000, guid: c27cc0614acd4c74ea9b5e508b765a31, type: 3}
+  - {fileID: 21300000, guid: d0079ad104bc37e4c99c72cfcc836a16, type: 3}
+  - {fileID: 21300000, guid: 16e32a12ae9aefc42b8e67a8bc6b8244, type: 3}
+  - {fileID: 21300000, guid: 61fd3e5205c7b1145958f4d3c80bbf39, type: 3}
+  - {fileID: 21300000, guid: 39006cf297e7fa442a7c67ea94f34e49, type: 3}
+  - {fileID: 21300000, guid: b5582b13af2a8e14faf9431a0d42f699, type: 3}
+  - {fileID: 21300000, guid: 85d01b83ec3d0f14294f52f1ccc18923, type: 3}
+  - {fileID: 21300000, guid: 40e97ac32f0c2964a9912aaadf4f598d, type: 3}
+  - {fileID: 21300000, guid: 48ced4a4625fbea4aa60e28fdf622baa, type: 3}
+  - {fileID: 21300000, guid: a2a39665f326f5848b372fb6094bda9c, type: 3}
+  - {fileID: 21300000, guid: 44d63bf562bc4bc4d8c9f9c4ec6a269c, type: 3}
+  - {fileID: 21300000, guid: 5a1bf0762a72acc4faaaed7930e38ef0, type: 3}
+  - {fileID: 21300000, guid: 816a7b76d8af88f4885bc79ae4e976a4, type: 3}
+  - {fileID: 21300000, guid: a2a349994d003fb41aac30f946777942, type: 3}
+  - {fileID: 21300000, guid: f636c91bf6d6e9e469c2085e395c00e1, type: 3}
+  - {fileID: 21300000, guid: 1e1d1b4b8f7748441ae76e07b4c7a342, type: 3}
+  - {fileID: 21300000, guid: e0ecc9abcea07714e865e4e458d1e891, type: 3}
+  - {fileID: 21300000, guid: a8cdbb6c94f59da45907373045385d4b, type: 3}
+  - {fileID: 21300000, guid: e6f808bd03fd1a6409bd931d412d6a81, type: 3}
+  - {fileID: 21300000, guid: e169c31edceb0f34b9981233c36010ff, type: 3}
+  - {fileID: 21300000, guid: ebdd34aeb4f70574d8737cf92f736b52, type: 3}
+  - {fileID: 21300000, guid: be88993f53ce42248827f70068f3df68, type: 3}
+  - {fileID: 21300000, guid: 293b1f4f41ad5304f8184e1463147917, type: 3}
+  - {fileID: 21300000, guid: 02389fafea5f869418d8e547b5054fee, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Mutiple_1
+  - CashA
+  - adget
+  - ManyCashB
+  - Mutiple_Unknown
+  - pic_background_shuzi
+  - Gold
+  - LightB
+  - Mutiple_5
+  - Gift
+  - backgrond_light
+  - get
+  - pic_background_baomadeng
+  - pic_background_tittle
+  - CashB
+  - adopen
+  - Mutiple_2
+  - ok
+  - pic_icon_xuanzhong
+  - pic_button_exit
+  - Mutiple_1.5
+  - ManyGold
+  - Mutiple_3
+  - LightA
+  - ManyCashA
+  m_Tag: RewardPanel
+  m_IsVariant: 0

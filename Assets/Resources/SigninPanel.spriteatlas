@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SigninPanel
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: f6c9c6e8e917fb646b148c5622517dc6, type: 3}
+    totalSpriteSurfaceArea: 471258
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a9d5ed81bb7ea1f44b243f0479dbd18d, type: 3}
+  - {fileID: 21300000, guid: 44d7570254b79e047b911bec4bf6ded0, type: 3}
+  - {fileID: 21300000, guid: 37d45c923858f904b951f8632b20ea5c, type: 3}
+  - {fileID: 21300000, guid: 98e51c05aa20cc24fbabbb3bc9a7ac42, type: 3}
+  - {fileID: 21300000, guid: 1a5978e555412f6438bf22693d0145c3, type: 3}
+  - {fileID: 21300000, guid: 097184773e0742142905a0fb85b5b19b, type: 3}
+  - {fileID: 21300000, guid: f51b0fc7a68d82e43b77be5a39507bb0, type: 3}
+  - {fileID: 21300000, guid: a9e9a40bcac1c42409d830c216ebb049, type: 3}
+  - {fileID: 21300000, guid: 3bc49a4bdd72abc4a8937e7e228493ae, type: 3}
+  - {fileID: 21300000, guid: dd6e8a1ca8b29ed4fb3108ad9a743bf5, type: 3}
+  - {fileID: 21300000, guid: 3667fdce233ea774d907178dbdbcc118, type: 3}
+  - {fileID: 21300000, guid: ae255a1ff44421c41bca6ac6ba955f68, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - GoldGetIcon
+  - pic_right
+  - GoldUngetIcon
+  - ungetbg
+  - CashUngetIcon
+  - hasgetbg
+  - CashGetIcon
+  - title
+  - 3
+  - todaybg
+  - pic_background_blue
+  - get
+  m_Tag: SigninPanel
+  m_IsVariant: 0
