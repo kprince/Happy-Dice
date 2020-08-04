@@ -319,6 +319,7 @@ namespace MiddleGround.Save
             {
                 DateTime now = DateTime.Now;
                 string saveStr = PlayerPrefs.GetString(Save_LastGetExtraDate_Key, string.Empty);
+                Debug.Log(now + "/" + saveStr);
                 if (string.IsNullOrEmpty(saveStr))
                 {
                     return true;
@@ -387,13 +388,18 @@ namespace MiddleGround.Save
         {
             get
             {
-                return PlayerPrefs.GetInt(Save_ScratchTicket_Key, Scratch_DefaultTickets);
+                int currentNum = PlayerPrefs.GetInt(Save_ScratchTicket_Key, Scratch_DefaultTickets);
+                if (Tomorrow && currentNum <= 15)
+                    currentNum += 5;
+                PlayerPrefs.SetString(Save_LastGetExtraDate_Key, DateTime.Now.ToString());
+                return currentNum;
             }
             set
             {
                 if (value < 0)
                     value = 0;
                 PlayerPrefs.SetInt(Save_ScratchTicket_Key, value);
+                PlayerPrefs.SetString(Save_LastGetExtraDate_Key, DateTime.Now.ToString());
                 PlayerPrefs.Save();
             }
         }

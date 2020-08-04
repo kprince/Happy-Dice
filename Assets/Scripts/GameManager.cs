@@ -776,6 +776,12 @@ public class GameManager : MonoBehaviour
         int total = (int)interval.TotalSeconds;
        int  leftseconds = total % SaveManager.PLAYER_SECOND;
         int offlineAddEnergy= total / SaveManager.PLAYER_SECOND;
+        if (offlineAddEnergy < 0)
+        {
+            nextNeedseconds = SaveManager.PLAYER_SECOND;
+            return save.player.energy;
+        }
+
         save.player.energy += offlineAddEnergy;
         if (offlineAddEnergy > 0)
             save.player.lastRevertEnergyDate = now.AddSeconds(-leftseconds);
