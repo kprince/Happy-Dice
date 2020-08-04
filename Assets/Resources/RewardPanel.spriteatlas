@@ -31,7 +31,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 4a9763f114d50ea45b137d902da5b24a, type: 3}
-    totalSpriteSurfaceArea: 3430456
+    totalSpriteSurfaceArea: 3574247
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -42,9 +42,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 61fd3e5205c7b1145958f4d3c80bbf39, type: 3}
   - {fileID: 21300000, guid: 39006cf297e7fa442a7c67ea94f34e49, type: 3}
   - {fileID: 21300000, guid: b5582b13af2a8e14faf9431a0d42f699, type: 3}
+  - {fileID: 21300000, guid: e711b973d5486f042941460a8dd25917, type: 3}
   - {fileID: 21300000, guid: 85d01b83ec3d0f14294f52f1ccc18923, type: 3}
   - {fileID: 21300000, guid: 40e97ac32f0c2964a9912aaadf4f598d, type: 3}
   - {fileID: 21300000, guid: 48ced4a4625fbea4aa60e28fdf622baa, type: 3}
+  - {fileID: 21300000, guid: aa1e24c4665ad7447adc9ab05276ce4c, type: 3}
   - {fileID: 21300000, guid: a2a39665f326f5848b372fb6094bda9c, type: 3}
   - {fileID: 21300000, guid: 44d63bf562bc4bc4d8c9f9c4ec6a269c, type: 3}
   - {fileID: 21300000, guid: 5a1bf0762a72acc4faaaed7930e38ef0, type: 3}
@@ -68,9 +70,11 @@ SpriteAtlas:
   - Mutiple_Unknown
   - pic_background_shuzi
   - Gold
+  - 6
   - LightB
   - Mutiple_5
   - Gift
+  - 5
   - backgrond_light
   - get
   - pic_background_baomadeng

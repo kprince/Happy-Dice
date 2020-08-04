@@ -212,9 +212,7 @@ public class Panel_Reward : PanelBase
         }
 #endif
         clickAdTime++;
-        Ads._instance.SetRewardedCallBack(OnadGetRewardedCallBack);
-        Ads._instance.adDes = rewardType.ToString() + "的倍数获得广告";
-        Ads._instance.ShowRewardVideo(clickAdTime);
+        Ads._instance.ShowRewardVideo(OnadGetRewardedCallBack, clickAdTime, "dice get " + rewardType + " random mutiple");
     }
     void OnadGetRewardedCallBack()
     {
@@ -262,9 +260,7 @@ public class Panel_Reward : PanelBase
         }
 #endif
         clickAdTime++;
-        Ads._instance.SetRewardedCallBack(OnAdopenRewardedCallback);
-        Ads._instance.adDes = "惊喜礼盒打开";
-        Ads._instance.ShowRewardVideo(clickAdTime);
+        Ads._instance.ShowRewardVideo(OnAdopenRewardedCallback, clickAdTime, "open dice gift");
     }
     void OnAdopenRewardedCallback()
     {

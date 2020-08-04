@@ -124,9 +124,7 @@ public class Panel_Signin : PanelBase
             }
 #endif
             clicktime++;
-            Ads._instance.SetRewardedCallBack(OnAdRewardedCallback);
-            Ads._instance.adDes = "签到多倍奖励";
-            Ads._instance.ShowRewardVideo(clicktime);
+            Ads._instance.ShowRewardVideo(OnAdRewardedCallback, clicktime, "get signin mutiple reward");
         }
         else
         {

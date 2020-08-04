@@ -35,7 +35,7 @@ public class Panel_Loading : PanelBase
         Coroutine dicCor = StartCoroutine(AutoRotateDice());
         int progress = 0;
         int speed = 1;
-        float maxWaitTime = 5;
+        float maxWaitTime = 10;
         while (true)
         {
             yield return null;
