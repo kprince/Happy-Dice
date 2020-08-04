@@ -636,7 +636,6 @@ GameObject:
   - component: {fileID: 795929288257737099}
   - component: {fileID: 795929288257737096}
   - component: {fileID: 795929288257737098}
-  - component: {fileID: 8780363138495626737}
   - component: {fileID: 3988476532296027188}
   - component: {fileID: 5701407738066218636}
   m_Layer: 5
@@ -727,18 +726,6 @@ MonoBehaviour:
   RewardPanelType: 1
   RewardNum: 1
   RewardMutiple: 1
---- !u!225 &8780363138495626737
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795929288257737095}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &3988476532296027188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,7 +855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &777825615240638323
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19169,7 +19156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2686ff5507748c2478b50a603d1f1555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text_content: {fileID: 0}
+  text_content: {fileID: 8828612600283289008}
 --- !u!1 &6405923251944082866
 GameObject:
   m_ObjectHideFlags: 0

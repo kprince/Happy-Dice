@@ -15,33 +15,33 @@ public class AdjustEventLogger : MonoBehaviour
     private static extern string Getidfa();
 #endif
 #if UNITY_IOS
-    public const string APP_TOKEN = "";
-    public const string TOKEN_open = "";
-    public const string TOKEN_ad = "";
-    public const string TOKEN_noads = "";
-    public const string TOKEN_stage_end = "";
+    public const string APP_TOKEN = "stg63h4jumtc";
+    public const string TOKEN_open = "outopv";
+    public const string TOKEN_ad = "9jhkm5";
+    public const string TOKEN_noads = "12bgiw";
+    public const string TOKEN_stage_end = "g53a9y";
     public const string TOKEN_wheel="";
     public const string TOKEN_slots="";
     public const string TOKEN_ggl = "";
-    public const string TOKEN_deeplink = "";
-    public const string TOKEN_packb = "";
+    public const string TOKEN_deeplink = "95sha9";
+    public const string TOKEN_packb = "sn9jkr";
 #elif UNITY_ANDROID
-    public const string APP_TOKEN = "";
-    public const string TOKEN_open = "";
-    public const string TOKEN_ad = "";
-    public const string TOKEN_noads = "";
+    public const string APP_TOKEN = "tpupja970gsg";
+    public const string TOKEN_open = "dgtq96";
+    public const string TOKEN_ad = "pb1czc";
+    public const string TOKEN_noads = "nup1h8";
     /// <summary>
     /// dice
     /// </summary>
-    public const string TOKEN_stage_end = "";
+    public const string TOKEN_stage_end = "mvnzh1";
     public const string TOKEN_wheel = "";
     public const string TOKEN_slots = "";
     /// <summary>
     /// scratch
     /// </summary>
     public const string TOKEN_ggl = "";
-    public const string TOKEN_deeplink = "";
-    public const string TOKEN_packb = "";
+    public const string TOKEN_deeplink = "olvj3w";
+    public const string TOKEN_packb = "vpt6vo";
 #endif
     public static AdjustEventLogger Instance;
     private void Awake()

@@ -10,13 +10,13 @@ using UnityEngine.UI;
 public class Ads : MonoBehaviour
 {
 #if UNITY_ANDROID
-	private const string APP_KEY = "";
+	private const string APP_KEY = "c7df148d";
 #elif UNITY_IOS
-	private const string APP_KEY = "";
+	private const string APP_KEY = "c63c67d5";
 #endif
 	public static Ads _instance;
 	public string adDes = string.Empty;
-	public const string AppName = "";
+	public const string AppName = "A013_dice";
 	private void Awake()
 	{
 		_instance = this;
@@ -42,9 +42,9 @@ public class Ads : MonoBehaviour
 		adDes = des;
 		rewardCallback = rewardedCallback;
 #if UNITY_EDITOR
-		rewardedCallback();
-		Debug.Log("Show RV : 【" + des + "】");
-		return true;
+        rewardedCallback();
+        Debug.Log("Show RV : 【" + des + "】");
+        return true;
 #endif
 #if UNITY_IOS
 		if (!MG_Manager.Instance.Get_Save_PackB())
@@ -53,7 +53,7 @@ public class Ads : MonoBehaviour
 			return true;
 		}
 #endif
-		if (IronSource.Agent.isRewardedVideoAvailable())
+        if (IronSource.Agent.isRewardedVideoAvailable())
 		{
 			IronSource.Agent.showRewardedVideo();
 			return true;
@@ -130,7 +130,14 @@ public class Ads : MonoBehaviour
 		MG_Manager.Instance.SendAdjustPlayAdEvent(false, true, adDes);
 		if (clickAdTime >= 2)
 		{
-			MG_UIManager.Instance.CloseTopPopPanelAsync();
+            if (MG_UIManager.Instance.MenuPanel.isInMG)
+			{
+				MG_UIManager.Instance.CloseTopPopPanelAsync();
+			}
+            else
+            {
+				PanelManager.Instance.CloseTopPanel();
+            }
 			MG_Manager.Instance.Show_PopTipsPanel(text);
 		}
 		notice.SetActive(false);
@@ -155,5 +162,3 @@ public class Ads : MonoBehaviour
 		popCallback?.Invoke();
     }
 }
-//FB A:774613690010415
-//FB IOS:308946513807140

@@ -60,17 +60,6 @@ public class Panel_Jackpot : PanelBase
         if (needShowAd)
         {
             ResetRewardIconPos();
-#if UNITY_EDITOR
-            OnRewardedCallback();
-            return;
-#endif
-#if UNITY_IOS
-            if (!GameManager.Instance.GetShowExchange())
-            {
-                OnRewardedCallback();
-                return;
-            }
-#endif
             clickAdTime++;
             Ads._instance.ShowRewardVideo(OnRewardedCallback, clickAdTime, "dice slots spin");
         }

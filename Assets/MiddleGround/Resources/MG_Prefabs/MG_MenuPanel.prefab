@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4489305909531163395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -807,6 +807,7 @@ MonoBehaviour:
   go_scratchRP: {fileID: 6196672875884343878}
   go_cashoutTips_cash: {fileID: 6923623915795521288}
   go_cashoutTips_special: {fileID: 7196804152182949307}
+  go_bottom: {fileID: 3864022054074471970}
 --- !u!1 &3864022052873064232
 GameObject:
   m_ObjectHideFlags: 0

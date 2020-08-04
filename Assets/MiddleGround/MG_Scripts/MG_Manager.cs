@@ -33,14 +33,14 @@ namespace MiddleGround
         public bool NeedRateusGuid = true;
         public bool NeedFirstComeReward = true;
 
+        GameObject go_bg;
         MG_Config MG_Config;
-        CanvasGroup canvasGroup;
         bool hasShow = false;
         private void Awake()
         {
             Instance = this;
-            canvasGroup = GetComponent<CanvasGroup>();
             Application.targetFrameRate = 60;
+            go_bg = transform.GetChild(0).gameObject;
             gameObject.AddComponent<MG_UIManager>().Init(
                 transform.GetChild(1),
                 transform.GetChild(2),
@@ -51,69 +51,45 @@ namespace MiddleGround
         }
         private void Start()
         {
-            ShowMGPanel();
+            MG_UIManager.Instance.ShowMenuPanel();
         }
-        public void ShowMGPanel(MG_GamePanelType startShowPanel = MG_GamePanelType.DicePanel)
+        public void OnLoadingEnd()
         {
-            canvasGroup.alpha = 1;
-            canvasGroup.blocksRaycasts = true;
-            if (!hasShow)
-            {
-                hasShow = true;
-                MG_UIManager.Instance.ShowMenuPanel(startShowPanel);
-            }
-            else
-            {
-                switch (startShowPanel)
-                {
-                    case MG_GamePanelType.DicePanel:
-                        MG_UIManager.Instance.MenuPanel.OnDiceButtonClick();
-                        break;
-                    case MG_GamePanelType.ScratchPanel:
-                        MG_UIManager.Instance.MenuPanel.OnScratchButtonClick();
-                        break;
-                    case MG_GamePanelType.SlotsPanel:
-                        MG_UIManager.Instance.MenuPanel.OnSlotsButtonClick();
-                        break;
-                    case MG_GamePanelType.WheelPanel:
-                        MG_UIManager.Instance.MenuPanel.OnWheelButtonClick();
-                        break;
-                }
-            }
+            loadEnd = true;
+            MG_UIManager.Instance.MenuPanel.Init();
         }
-        public void CloseMGPanel()
+        public void SetBGState(bool show)
         {
-            canvasGroup.alpha = 0;
-            canvasGroup.blocksRaycasts = false;
+            go_bg.SetActive(show);
         }
         public bool Get_Save_PackB()
         {
 #if UNITY_EDITOR
             return true;
 #endif
-            return MG_SaveManager.PackB;
+            return GameManager.Instance.GetShowExchange();
         }
         public void Set_Save_isPackB()
         {
-            if (MG_SaveManager.PackB) return;
-            MG_SaveManager.PackB = true;
+            if (GameManager.Instance.GetShowExchange()) return;
+            GameManager.Instance.SetShowExchange(true);
             SendAdjustPackBEvent();
         }
         public bool Get_Save_SoundOn()
         {
-            return MG_SaveManager.SoundOn;
+            return GameManager.Instance.GetSoundOn();
         }
         public void Set_Save_SoundOn(bool value)
         {
-            MG_SaveManager.SoundOn = value;
+            GameManager.Instance.SetSoundOn(value);
         }
         public int Get_Save_Gold()
         {
-            return MG_SaveManager.Gold;
+            return GameManager.Instance.GetGold();
         }
         public void Add_Save_Gold(int value)
         {
-            MG_SaveManager.Gold += value;
+            GameManager.Instance.AddGold(value);
             if (value < 0)
                 MG_UIManager.Instance.UpdateMenuPanel_GoldText();
             MG_UIManager.Instance.UpdateSlotsSpinButton(MG_SaveManager.Gold);
@@ -122,11 +98,11 @@ namespace MiddleGround
         }
         public int Get_Save_Cash()
         {
-            return MG_SaveManager.Cash;
+            return GameManager.Instance.GetCash();
         }
         public void Add_Save_Cash(int value)
         {
-            MG_SaveManager.Cash += value;
+            GameManager.Instance.AddCash(value);
             if (value < 0)
                 MG_UIManager.Instance.UpdateMenuPanel_CashText();
             if (value > 0)
@@ -1012,6 +988,7 @@ namespace MiddleGround
         ScratchToken,
         SlotsToken,
         DiceToken,
+        WheelToken,
         Null
     }
     public enum MG_PopRewardPanel_RewardType

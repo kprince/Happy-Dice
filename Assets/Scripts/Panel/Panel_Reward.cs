@@ -200,17 +200,6 @@ public class Panel_Reward : PanelBase
     {
         AudioManager.Instance.PlayerSound("Button");
         if (isSliding) return;
-#if UNITY_EDITOR
-        OnadGetRewardedCallBack();
-        return;
-#endif
-#if UNITY_IOS
-        if (!GameManager.Instance.GetShowExchange())
-        {
-            OnadGetRewardedCallBack();
-            return;
-        }
-#endif
         clickAdTime++;
         Ads._instance.ShowRewardVideo(OnadGetRewardedCallBack, clickAdTime, "dice get " + rewardType + " random mutiple");
     }
@@ -228,11 +217,11 @@ public class Panel_Reward : PanelBase
     {
         AudioManager.Instance.PlayerSound("Button");
         if (isSliding) return;
-#if !UNITY_EDITOR
-        Ads._instance.adDes = rewardType.ToString() + "的nothanks";
-        Ads._instance.ShowInterstialAd();
-#endif
-        if (!hasGet && rewardType == RewardType.Gold) 
+        Ads._instance.ShowInterstialAd(NothanksCallback,"dice reward "+rewardType+" nothanks");
+    }
+    void NothanksCallback()
+    {
+        if (!hasGet && rewardType == RewardType.Gold)
         {
             rewardMutiple = 1;
             GetReward();
@@ -248,17 +237,6 @@ public class Panel_Reward : PanelBase
             OnAdopenRewardedCallback();
             return;
         }
-#if UNITY_EDITOR
-        OnAdopenRewardedCallback();
-        return;
-#endif
-#if UNITY_IOS
-        if (!GameManager.Instance.GetShowExchange())
-        {
-            OnAdopenRewardedCallback();
-            return;
-        }
-#endif
         clickAdTime++;
         Ads._instance.ShowRewardVideo(OnAdopenRewardedCallback, clickAdTime, "open dice gift");
     }

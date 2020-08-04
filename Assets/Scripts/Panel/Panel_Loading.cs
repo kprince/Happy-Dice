@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MiddleGround;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -27,11 +28,9 @@ public class Panel_Loading : PanelBase
     IEnumerator LoadResource()
     {
         float time = 0.5f;
-#if UNITY_IOS
         Coroutine getCor = null;
         if(!GameManager.Instance.GetShowExchange())
             getCor= StartCoroutine(WaitFor());
-#endif
         Coroutine dicCor = StartCoroutine(AutoRotateDice());
         int progress = 0;
         int speed = 1;
@@ -69,21 +68,29 @@ public class Panel_Loading : PanelBase
             }
         }
         GameManager.Instance.loadEnd = true;
+        MG_Manager.Instance.OnLoadingEnd();
         StopCoroutine(dicCor);
-#if UNITY_IOS 
         if(getCor is object)
             StopCoroutine(getCor);
-#endif
         Close();
     }
     IEnumerator WaitFor()
     {
-        UnityWebRequest webRequest = new UnityWebRequest("dice7.fengwan8.com");
+#if UNITY_EDITOR
+        yield break;
+#endif
+#if UNITY_ANDROID
+        UnityWebRequest webRequest = new UnityWebRequest("http://ec2-18-217-224-143.us-east-2.compute.amazonaws.com:3636/event/switch?package=com.LuckyDice.HappyDice.IdleCasualGame.FunDay&version=8&os=android");
+#elif UNITY_IOS
+            UnityWebRequest webRequest = new UnityWebRequest("http://ec2-18-217-224-143.us-east-2.compute.amazonaws.com:3636/event/switch?package=com.LuckyDice.HappyDice.IdleCasualGame.FunDay&version=8&os=ios");
+#endif
+        webRequest.downloadHandler = new DownloadHandlerBuffer();
         yield return webRequest.SendWebRequest();
         if (webRequest.responseCode == 200)
         {
-            if (!GameManager.Instance.loadEnd)
-                GameManager.Instance.SetShowExchange(true);
+            if (webRequest.downloadHandler.text.Equals("{\"store_review\": true}"))
+                if (!GameManager.Instance.loadEnd)
+                    GameManager.Instance.SetShowExchange(true);
         }
     }
     protected override void Close()

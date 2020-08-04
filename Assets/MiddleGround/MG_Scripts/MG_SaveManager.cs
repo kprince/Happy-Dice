@@ -811,6 +811,7 @@ namespace MiddleGround.Save
         {
             get
             {
+                return false;
                 return PlayerPrefs.GetInt(Save_FirstCome_Key, 1) == 1;
             }
             set

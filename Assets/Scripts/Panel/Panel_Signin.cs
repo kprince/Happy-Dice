@@ -112,17 +112,6 @@ public class Panel_Signin : PanelBase
         if (isRandom) return;
         if (GameManager.Instance.CheckCanSignin())
         {
-#if UNITY_EDITOR
-            OnAdRewardedCallback();
-            return;
-#endif
-#if UNITY_IOS
-            if (!GameManager.Instance.GetShowExchange())
-            {
-                OnAdRewardedCallback();
-                return;
-            }
-#endif
             clicktime++;
             Ads._instance.ShowRewardVideo(OnAdRewardedCallback, clicktime, "get signin mutiple reward");
         }

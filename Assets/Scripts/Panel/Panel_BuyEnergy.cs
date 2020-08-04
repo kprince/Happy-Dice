@@ -16,13 +16,6 @@ public class Panel_BuyEnergy : PanelBase
     void OnAdClick()
     {
         AudioManager.Instance.PlayerSound("Button");
-#if UNITY_IOS
-        if (!GameManager.Instance.GetShowExchange())
-        {
-            OnRewardedCallback();
-            return;
-        }
-#endif
         clickAdTime++;
         Ads._instance.ShowRewardVideo(OnRewardedCallback, clickAdTime, "buy dice energy");
     }

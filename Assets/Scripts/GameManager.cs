@@ -936,9 +936,12 @@ public class GameManager : MonoBehaviour
     }
     public void SetShowExchange(bool value)
     {
-        save.player.showExchange = value;
-        if (value)
-            SendAdjustPackBEvent();
+        if (!save.player.showExchange)
+        {
+            save.player.showExchange = value;
+            if (value)
+                SendAdjustPackBEvent();
+        }
     }
     Config config;
     int GetConfigIndex()

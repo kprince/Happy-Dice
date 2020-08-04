@@ -379,14 +379,20 @@ namespace MiddleGround.UI
             }
             return true;
         }
-        public bool ShowMenuPanel(MG_GamePanelType startPanel)
+        public void CloseCurrentGamePanel()
+        {
+            if(Current_GamePanel is object)
+            {
+                StartCoroutine(Current_GamePanel.OnExit());
+                Current_GamePanel = null;
+            }
+        }
+        public bool ShowMenuPanel()
         {
             if(MenuPanel is null)
             {
-                MG_SaveManager.Current_GamePanel = (int)startPanel;
                 MenuPanel = Instantiate(Resources.Load<GameObject>(MenuPanelPath), MenuPanelRoot).GetComponent<MG_MenuPanel>();
                 StartCoroutine(MenuPanel.OnEnter());
-                ShowGamePanel(startPanel);
                 return true;
             }
             Debug.LogWarning("Show MG_MenuPanel Error : panel has show.");
