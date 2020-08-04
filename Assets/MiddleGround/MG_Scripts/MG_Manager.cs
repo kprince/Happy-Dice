@@ -62,6 +62,11 @@ namespace MiddleGround
         {
             go_bg.SetActive(show);
         }
+        public void ShowForceGuid()
+        {
+            if (!MG_SaveManager.GuidMG)
+                MG_UIManager.Instance.MenuPanel.ShowForceGuid();
+        }
         public bool Get_Save_PackB()
         {
 #if UNITY_EDITOR
@@ -822,7 +827,7 @@ namespace MiddleGround
                 //累计金币
                 ("new_value", Get_Save_Gold().ToString()),
                 //累计体力
-                ("stage_id", Get_Save_TotalTimes().ToString()),
+                ("stage_id", GameManager.Instance.GetTotalPlayDiceTime().ToString()),
                 //广告id
                 ("id", adByWay),
                 //广告类型，0插屏1奖励视频
@@ -848,9 +853,9 @@ namespace MiddleGround
                 //累计金币
                 ("new_value", Get_Save_Gold().ToString()),
                 //总游戏次数
-                ("stage_id", Get_Save_TotalTimes().ToString()),
+                ("stage_id", GameManager.Instance.GetTotalPlayDiceTime().ToString()),
                 //第几次骰子
-                ("id", Get_Save_DiceTotalTimes().ToString()),
+                ("id", GameManager.Instance.GetTotalPlayDiceTime().ToString()),
                 //累计钻石
                 ("other_int1", Get_Save_Diamond().ToString()),
                 //累计777
@@ -872,7 +877,7 @@ namespace MiddleGround
                 //累计金币
                 ("new_value", Get_Save_Gold().ToString()),
                 //总游戏次数
-                ("stage_id", Get_Save_TotalTimes().ToString()),
+                ("stage_id", GameManager.Instance.GetTotalPlayDiceTime().ToString()),
                 //第几次转盘
                 ("id", Get_Save_WheelTotalTimes().ToString()),
                 //累计钻石
@@ -896,7 +901,7 @@ namespace MiddleGround
                 //累计金币
                 ("new_value", Get_Save_Gold().ToString()),
                 //总游戏次数
-                ("stage_id", Get_Save_TotalTimes().ToString()),
+                ("stage_id", GameManager.Instance.GetTotalPlayDiceTime().ToString()),
                 //第几次老虎机
                 ("id", Get_Save_SlotsTotalTimes().ToString()),
                 //累计钻石
@@ -920,7 +925,7 @@ namespace MiddleGround
                 //累计金币
                 ("new_value", Get_Save_Gold().ToString()),
                 //总游戏次数
-                ("stage_id", Get_Save_TotalTimes().ToString()),
+                ("stage_id", GameManager.Instance.GetTotalPlayDiceTime().ToString()),
                 //第几次刮刮乐
                 ("id", Get_Save_ScratchTotalTimes().ToString()),
                 //累计钻石

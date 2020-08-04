@@ -399,6 +399,9 @@ public class Panel_Reward : PanelBase
             PanelManager.Instance.ShowPanel(PanelType.RateUs);
         }
         else
+        {
+            GameManager.Instance.CheckShowForceMGGuid();
             GameManager.Instance.canRollDice = true;
+        }
     }
 }

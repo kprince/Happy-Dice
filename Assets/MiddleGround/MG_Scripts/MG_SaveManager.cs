@@ -68,6 +68,7 @@ namespace MiddleGround.Save
         const string Save_GuidDice_Key = "MG_GuidDice";
         const string Save_GuidScratch_Key = "MG_GuidScratch";
         const string Save_GuidSlots_Key = "MG_GuidSlots";
+        const string Save_GuidMG_Key = "MG_GuidMG";
         const string Save_FirstCome_Key = "MG_FirstCome";
 
         const string Save_Get777Times_Key = "MG_Get777Times";
@@ -803,6 +804,21 @@ namespace MiddleGround.Save
                 if (value)
                 {
                     PlayerPrefs.SetInt(Save_GuidSlots_Key, 1);
+                    PlayerPrefs.Save();
+                }
+            }
+        }
+        public static bool GuidMG
+        {
+            get
+            {
+                return PlayerPrefs.GetInt(Save_GuidMG_Key, 0) == 1;
+            }
+            set
+            {
+                if (value)
+                {
+                    PlayerPrefs.SetInt(Save_GuidMG_Key, 1);
                     PlayerPrefs.Save();
                 }
             }

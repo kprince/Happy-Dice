@@ -126,7 +126,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 7
+  bundleVersion: 8
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -166,8 +166,9 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.LuckyDice.HappyDice.IdleCasualGame.FunDay
     iOS: com.LuckyDice.HappyDice.IdleCasualGame.FunDay
+    iPhone: com.LuckyDice.HappyDice.IdleCasualGame.FunDay
   buildNumber: {}
-  AndroidBundleVersionCode: 7
+  AndroidBundleVersionCode: 8
   AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 29
   AndroidPreferredInstallLocation: 1

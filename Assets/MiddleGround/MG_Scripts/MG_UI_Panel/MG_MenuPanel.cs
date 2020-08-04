@@ -18,10 +18,12 @@ namespace MiddleGround.UI
         public Button btn_Gold;
         public Button btn_Cash;
         public Button btn_SpecialToken;
+        public Button btn_ScratchOut;
 
         public Text text_Gold;
         public Text text_Cash;
         public Text text_ScratchTicketNum;
+        public Text text_ScratchOutTicketNum;
         public Text text_SpecialToken;
 
         public Image img_SpecialToken;
@@ -34,6 +36,8 @@ namespace MiddleGround.UI
         public Image img_guidBG;
         public Image img_guidIcon;
         public Text text_guidDes;
+        public Transform trans_forceGuidMG;
+        public GameObject go_forceGuid;
 
         public GameObject go_wheelRP;
         public GameObject go_signRP;
@@ -63,6 +67,7 @@ namespace MiddleGround.UI
             img_dicebutton = btn_Dice.image;
             img_wheelbutton = btn_Wheel.image;
             img_slotsbutton = btn_Slots.image;
+            go_forceGuid = trans_forceGuidMG.parent.gameObject;
 
             btn_Back.onClick.AddListener(OnBackButtonClick);
             btn_Wheel.onClick.AddListener(OnWheelButtonClick);
@@ -74,6 +79,7 @@ namespace MiddleGround.UI
             btn_Cash.onClick.AddListener(OnCashButtonClick);
             btn_SpecialToken.onClick.AddListener(OnSpecialButtonClick);
             trans_guidMask.GetComponent<Button>().onClick.AddListener(OnMaskButtonClick);
+            btn_ScratchOut.onClick.AddListener(OnScratchOutButtonClick);
 
 
             float lwr = Screen.height / Screen.width;
@@ -111,6 +117,7 @@ namespace MiddleGround.UI
             dic_flytarget_transform.Add((int)MG_MenuFlyTarget.SSS, btn_SpecialToken.transform);
             dic_flytarget_transform.Add((int)MG_MenuFlyTarget.Diamond, btn_SpecialToken.transform);
             go_scratchRP.SetActive(false);
+            startY = btn_ScratchOut.transform.localPosition.y;
         }
         bool packB = false;
         public void Init()
@@ -120,20 +127,14 @@ namespace MiddleGround.UI
 
             go_cashoutTips_cash.SetActive(packB);
             go_cashoutTips_special.SetActive(packB);
+            btn_ScratchOut.gameObject.SetActive(true);
         }
         void OnBackButtonClick()
         {
             MG_Manager.Play_ButtonClick();
             if (!MG_Manager.Instance.canChangeGame) return;
-            if (isInMG)
-            {
-                MG_UIManager.Instance.CloseCurrentGamePanel();
-            }
-            else
-            {
-
-            }
-            SetMGState(!isInMG);
+            MG_UIManager.Instance.CloseCurrentGamePanel();
+            SetMGState(false);
         }
         public void OnWheelButtonClick()
         {
@@ -157,6 +158,23 @@ namespace MiddleGround.UI
                 go_scratchRP.SetActive(false);
             MG_UIManager.Instance.ShowGamePanel(MG_GamePanelType.ScratchPanel);
             UpdateBottomButtonState(MG_GamePanelType.ScratchPanel);
+            SetSpecialToken(MG_SpecialTokenType.ScratchToken);
+        }
+        void OnScratchOutButtonClick()
+        {
+            MG_Manager.Play_ButtonClick();
+            if (!MG_Manager.Instance.canChangeGame) return;
+            if (go_scratchRP.activeSelf)
+                go_scratchRP.SetActive(false);
+            if (go_forceGuid.activeSelf)
+            {
+                go_forceGuid.SetActive(false);
+                StopCoroutine("AutoMoveEnterMGGuidHand");
+                MG_SaveManager.GuidMG = true;
+            }
+            MG_UIManager.Instance.ShowGamePanel(MG_GamePanelType.ScratchPanel);
+            UpdateBottomButtonState(MG_GamePanelType.ScratchPanel);
+            SetMGState(true);
             SetSpecialToken(MG_SpecialTokenType.ScratchToken);
         }
         public void OnDiceButtonClick()
@@ -262,7 +280,9 @@ namespace MiddleGround.UI
         }
         public void UpdateScratchTicketText()
         {
-            text_ScratchTicketNum.text = MG_Manager.Instance.Get_Save_ScratchTicket().ToString();
+            string numStr= MG_Manager.Instance.Get_Save_ScratchTicket().ToString();
+            text_ScratchTicketNum.text = numStr;
+            text_ScratchOutTicketNum.text = numStr;
         }
         public void UpdateWheelRP()
         {
@@ -403,6 +423,7 @@ namespace MiddleGround.UI
                     MG_Manager.Instance.Random_DiceOrExtraReward(MG_PopRewardPanel_RewardType.Extra);
             }
             SetMGState(false);
+            btn_ScratchOut.gameObject.SetActive(false);
             yield return null;
         }
 
@@ -555,12 +576,39 @@ namespace MiddleGround.UI
             isInMG = show;
             if (show)
                 UpdateAllContent();
-            //btn_Back.gameObject.SetActive(show);
+            else
+                UpdateScratchTicketText();
+            btn_Back.gameObject.SetActive(show);
             btn_Cash.gameObject.SetActive(show);
             btn_Gold.gameObject.SetActive(show);
             btn_SpecialToken.gameObject.SetActive(show);
+            btn_ScratchOut.gameObject.SetActive(!show);
             go_bottom.gameObject.SetActive(show);
             MG_Manager.Instance.SetBGState(show);
+        }
+        public void ShowForceGuid()
+        {
+            go_forceGuid.SetActive(true);
+            StartCoroutine("AutoMoveEnterMGGuidHand");
+        }
+        float startX = 83;
+        float startY = 0;
+        float endX = 277;
+        IEnumerator AutoMoveEnterMGGuidHand()
+        {
+            trans_forceGuidMG.localPosition = new Vector2(startX + 1, startY);
+            float speed = -200;
+            bool isR = true;
+            while (true)
+            {
+                yield return null;
+                trans_forceGuidMG.localPosition -= new Vector3(Time.unscaledDeltaTime * speed, 0);
+                if ((isR && trans_forceGuidMG.localPosition.x >= endX) || (!isR && trans_forceGuidMG.localPosition.x <= startX))
+                {
+                    isR = !isR;
+                    speed = -speed;
+                }
+            }
         }
     }
 }

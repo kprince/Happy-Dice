@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MiddleGround;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -475,7 +476,10 @@ public class GameManager : MonoBehaviour
                             canGetExtraBonus = false;
                         }
                         else
+                        {
+                            CheckShowForceMGGuid();
                             canRollDice = true;
+                        }
                         break;
                     case 1:
                         panelManager.ShowPanel(PanelType.Jackpot, 0.3f);
@@ -494,6 +498,11 @@ public class GameManager : MonoBehaviour
             }
         }
         player_Animator.SetBool("Jump", false);
+    }
+    public void CheckShowForceMGGuid()
+    {
+        if (save.player.totalWasteEnergy >= 5)
+            MG_Manager.Instance.ShowForceGuid();
     }
     readonly List<int> nullList = new List<int>();
     readonly List<int> jackpotList = new List<int>();
@@ -1051,6 +1060,10 @@ public class GameManager : MonoBehaviour
             return baseNum;
         }
     }
+    public int GetTotalPlayDiceTime()
+    {
+        return save.player.totalWasteEnergy;
+    }
     [SerializeField]
     private ParticleSystem ps_effect1;
     [SerializeField]
@@ -1075,55 +1088,12 @@ public class GameManager : MonoBehaviour
 #endif
         AdjustEventLogger.Instance.AdjustEventNoParam(AdjustEventLogger.TOKEN_open);
     }
-    public void SendAdjustPlayAdEvent(bool hasAd,bool isRewardAd,string adByWay)
-    {
-#if UNITY_EDITOR
-        return;
-#endif
-        AdjustEventLogger.Instance.AdjustEvent(hasAd ? AdjustEventLogger.TOKEN_ad : AdjustEventLogger.TOKEN_noads,
-            //累计美元
-            ("value", save.player.cash.ToString()),
-            //累计金币
-            ("new_value", save.player.gold.ToString()),
-            //累计体力
-            ("stage_id", save.player.totalWasteEnergy.ToString()),
-            //广告id
-            ("id", adByWay),
-            //广告类型，0插屏1奖励视频
-            ("type", isRewardAd ? "1" : "0")
-            );
-    }
     public void SendAdjustDiceEvent()
     {
 #if UNITY_EDITOR
         return;
 #endif
-        AdjustEventLogger.Instance.AdjustEvent(AdjustEventLogger.TOKEN_stage_end,
-            //累计美元
-            ("value", save.player.cash.ToString()),
-            //累计金币
-            ("new_value", save.player.gold.ToString()),
-            //累计体力
-            ("stage_id", save.player.totalWasteEnergy.ToString()),
-            //游戏次数
-            ("id", save.player.totalWasteEnergy.ToString())
-            );
-    }
-    public void SendFBAttributeEvent(string uri)
-    {
-#if UNITY_EDITOR
-        return;
-#endif
-        AdjustEventLogger.Instance.AdjustEvent(AdjustEventLogger.TOKEN_deeplink,
-            ("link", uri), 
-            ("order_id", uri),
-            //累计美元
-            ("value", save.player.cash.ToString()),
-            //累计金币
-            ("new_value", save.player.gold.ToString()),
-            //累计体力
-            ("stage_id", save.player.totalWasteEnergy.ToString())
-            );
+        MG_Manager.Instance.SendAdjustDiceEvent();
     }
     private void OnApplicationPause(bool pause)
     {

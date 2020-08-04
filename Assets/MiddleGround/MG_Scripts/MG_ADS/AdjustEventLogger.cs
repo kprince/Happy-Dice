@@ -20,11 +20,11 @@ public class AdjustEventLogger : MonoBehaviour
     public const string TOKEN_ad = "9jhkm5";
     public const string TOKEN_noads = "12bgiw";
     public const string TOKEN_stage_end = "g53a9y";
-    public const string TOKEN_wheel="";
-    public const string TOKEN_slots="";
-    public const string TOKEN_ggl = "";
     public const string TOKEN_deeplink = "95sha9";
     public const string TOKEN_packb = "sn9jkr";
+    public const string TOKEN_wheel="wmlf0e";
+    public const string TOKEN_slots="v2m1qb";
+    public const string TOKEN_ggl = "m48mv9";
 #elif UNITY_ANDROID
     public const string APP_TOKEN = "tpupja970gsg";
     public const string TOKEN_open = "dgtq96";
@@ -34,14 +34,14 @@ public class AdjustEventLogger : MonoBehaviour
     /// dice
     /// </summary>
     public const string TOKEN_stage_end = "mvnzh1";
-    public const string TOKEN_wheel = "";
-    public const string TOKEN_slots = "";
+    public const string TOKEN_deeplink = "olvj3w";
+    public const string TOKEN_packb = "vpt6vo";
+    public const string TOKEN_wheel = "tqq67o";
+    public const string TOKEN_slots = "22z1ya";
     /// <summary>
     /// scratch
     /// </summary>
-    public const string TOKEN_ggl = "";
-    public const string TOKEN_deeplink = "olvj3w";
-    public const string TOKEN_packb = "vpt6vo";
+    public const string TOKEN_ggl = "qxhshi";
 #endif
     public static AdjustEventLogger Instance;
     private void Awake()

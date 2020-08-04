@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MiddleGround.UI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -123,6 +124,8 @@ public class PanelManager : MonoBehaviour
                 return;
             }
         }
+        if (PanelStack.Count > 1 && MG_UIManager.Instance is object)
+            MG_UIManager.Instance.MenuPanel.btn_ScratchOut.gameObject.SetActive(false);
     }
     public void ShowPanel(PanelType panel,float delayTime)
     {
@@ -166,6 +169,9 @@ public class PanelManager : MonoBehaviour
             Debug.LogError("从未实例化过该面板，也没有显示过");
             return;
         }
+        if (PanelStack.Count == 1)
+            if (MG_UIManager.Instance is object)
+                MG_UIManager.Instance.MenuPanel.btn_ScratchOut.gameObject.SetActive(true);
     }
     public void CloseTopPanel()
     {
@@ -173,6 +179,9 @@ public class PanelManager : MonoBehaviour
         {
             PanelBase tempPanel = PanelStack.Pop();
             tempPanel.OnExit();
+            if(PanelStack.Count==1)
+                if (MG_UIManager.Instance is object)
+                    MG_UIManager.Instance.MenuPanel.btn_ScratchOut.gameObject.SetActive(true);
         }
     }
     public void ClearAllPanel()

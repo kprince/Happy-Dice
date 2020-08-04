@@ -354,7 +354,10 @@ public class Panel_Jackpot : PanelBase
             GameManager.Instance.canGetExtraBonus = false;
         }
         else
+        {
+            GameManager.Instance.CheckShowForceMGGuid();
             GameManager.Instance.canRollDice = true;
+        }
     }
     IEnumerator DelayShowNothanks()
     {
