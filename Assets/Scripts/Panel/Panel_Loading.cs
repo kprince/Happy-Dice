@@ -80,9 +80,9 @@ public class Panel_Loading : PanelBase
         yield break;
 #endif
 #if UNITY_ANDROID
-        UnityWebRequest webRequest = new UnityWebRequest("http://ec2-18-217-224-143.us-east-2.compute.amazonaws.com:3636/event/switch?package=com.LuckyDice.HappyDice.IdleCasualGame.FunDay&version=8&os=android");
+        UnityWebRequest webRequest = new UnityWebRequest("http://ec2-18-217-224-143.us-east-2.compute.amazonaws.com:3636/event/switch?package=com.LuckyDice.HappyDice.IdleCasualGame.FunDay&version=9&os=android");
 #elif UNITY_IOS
-            UnityWebRequest webRequest = new UnityWebRequest("http://ec2-18-217-224-143.us-east-2.compute.amazonaws.com:3636/event/switch?package=com.LuckyDice.HappyDice.IdleCasualGame.FunDay&version=8&os=ios");
+            UnityWebRequest webRequest = new UnityWebRequest("http://ec2-18-217-224-143.us-east-2.compute.amazonaws.com:3636/event/switch?package=com.LuckyDice.HappyDice.IdleCasualGame.FunDay&version=9&os=ios");
 #endif
         webRequest.downloadHandler = new DownloadHandlerBuffer();
         yield return webRequest.SendWebRequest();

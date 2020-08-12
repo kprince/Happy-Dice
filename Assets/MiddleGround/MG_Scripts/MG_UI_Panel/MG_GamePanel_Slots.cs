@@ -332,7 +332,7 @@ namespace MiddleGround.UI
             }
             yield return null;
             CheckIsLock();
-            UpdateSpinButtonState(MG_SaveManager.Gold);
+            UpdateSpinButtonState(MG_Manager.Instance.Get_Save_Gold());
             isSpining = false;
             MG_Manager.Instance.canChangeGame = true;
         }
@@ -345,7 +345,7 @@ namespace MiddleGround.UI
             img_M.material.SetTextureOffset(mat_mainTex_Key, new Vector2(finalOffsetX, dic_type_offsetY[(int)MG_Slots_RewardType.SSS]));
             img_R.material.SetTextureOffset(mat_mainTex_Key, new Vector2(finalOffsetX, dic_type_offsetY[(int)MG_Slots_RewardType.SSS]));
             CheckIsLock();
-            UpdateSpinButtonState(MG_SaveManager.Gold);
+            UpdateSpinButtonState(MG_Manager.Instance.Get_Save_Gold());
             UpdateFruitNumText();
             yield return null;
             clickTime = 0;

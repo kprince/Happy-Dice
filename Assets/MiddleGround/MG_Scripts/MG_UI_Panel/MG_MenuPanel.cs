@@ -373,7 +373,10 @@ namespace MiddleGround.UI
                 yield return null;
                 if (toBiger)
                 {
-                    tempTrans.localScale += Vector3.one * Time.unscaledDeltaTime * 3;
+                    if (Time.unscaledDeltaTime < 0.4f)
+                        tempTrans.localScale += Vector3.one * Time.unscaledDeltaTime * 3;
+                    else
+                        tempTrans.localScale += Vector3.one * 0.02f * 3;
                     if (tempTrans.localScale.x >= 1.3f)
                     {
                         toBiger = false;
@@ -400,7 +403,10 @@ namespace MiddleGround.UI
                 }
                 else
                 {
-                    tempTrans.localScale -= Vector3.one * Time.unscaledDeltaTime * 3;
+                    if (Time.unscaledDeltaTime < 0.4f)
+                        tempTrans.localScale -= Vector3.one * Time.unscaledDeltaTime * 3;
+                    else
+                        tempTrans.localScale -= Vector3.one * 0.02f * 3;
                     if (tempTrans.localScale.x <= 1f)
                         break;
                 }

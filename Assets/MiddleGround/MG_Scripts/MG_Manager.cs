@@ -97,7 +97,7 @@ namespace MiddleGround
             GameManager.Instance.AddGold(value);
             if (value < 0)
                 MG_UIManager.Instance.UpdateMenuPanel_GoldText();
-            MG_UIManager.Instance.UpdateSlotsSpinButton(MG_SaveManager.Gold);
+            MG_UIManager.Instance.UpdateSlotsSpinButton(Get_Save_Gold());
             if (value > 0)
                 Play_Effect();
         }
